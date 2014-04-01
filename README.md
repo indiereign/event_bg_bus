@@ -2,15 +2,9 @@
 
 A simple pubsub event bus for Ruby applications.
 
-[![Build Status](https://travis-ci.org/kevinrutherford/event_bus.png)](https://travis-ci.org/kevinrutherford/event_bus)
-[![Dependency
-Status](https://gemnasium.com/kevinrutherford/event_bus.png)](https://gemnasium.com/kevinrutherford/event_bus)
-[![Code
-Climate](https://codeclimate.com/github/kevinrutherford/event_bus.png)](https://codeclimate.com/github/kevinrutherford/event_bus)
+[![Build Status](https://travis-ci.org/artmees/event_bus.svg?branch=master)](https://travis-ci.org/artmees/event_bus)
 
-* Gem: <https://rubygems.org/gems/event_bus>
-* API docs: <http://rubydoc.info/gems/event_bus/frames>
-* Source code: <https://github.com/kevinrutherford/event_bus>
+* Source code: <https://github.com/artmees/event_bus>
 
 ## Features
 
@@ -24,16 +18,10 @@ Climate](https://codeclimate.com/github/kevinrutherford/event_bus.png)](https://
 
 ## Installation
 
-Install the gem
-
-```
-gem install event_bus
-```
-
-Or add it to your Gemfile and run `bundle`.
+Add it to your Gemfile and run `bundle`.
 
 ``` ruby
-gem 'event_bus'
+gem 'event_bus', github: 'artmees/event_bus'
 ```
 
 ## Usage
@@ -153,8 +141,8 @@ See the specs for more detailed usage scenarios.
 
 ## Compatibility
 
-Tested with Ruby 1.9.x, JRuby, Rubinius.
-See the [build status](https://travis-ci.org/kevinrutherford/event_bus)
+Tested with Ruby 1.9.x, 2.x.x
+See the [build status](https://travis-ci.org/artmees/event_bus)
 for details.
 
 ## License
