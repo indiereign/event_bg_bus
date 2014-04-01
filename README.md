@@ -129,21 +129,20 @@ There are three ways to subscribe to events.
 
 #### Subscribe to background published events
 
-due to a limitation using [Sidekiq](https://github.com/mperham/sidekiq),
-you can not subscribe to events published using `bg_announce` using Symbols in either `event_name` or `payload`.
+due to some [Sidekiq](https://github.com/mperham/sidekiq) limitations with background jobs.
+you can not subscribe to events published by `EventBGBus` using Symbols in either `event_name` or `payload`.
 you can via Reqexp, Strings or listener objects.
 
+```ruby
+EventBus.subscribe('order_placed', StatsRecorder.new, :print_order)
+```
 
-    ```ruby
-    EventBus.subscribe('order_placed', StatsRecorder.new, :print_order)
-    ```
-
-    ```ruby
-    EventBus.subscribe('order_placed') do |payload|
-      order = payload['order']
-      //...
-    end
-    ```
+```ruby
+EventBus.subscribe('order_placed') do |payload|
+  order = payload['order']
+  //...
+end
+```
 
 See the specs for more detailed usage scenarios.
 
