@@ -18,10 +18,17 @@ A simple pubsub event bus for Ruby applications.
 
 ## Installation
 
+Install the gem
+```
+gem install 'event_bg_bus'
+```
+
 Add it to your Gemfile and run `bundle`.
 
 ``` ruby
 gem 'event_bus', github: 'artmees/event_bus'
+#or
+gem 'event_bg_bus'
 ```
 
 ## Usage
