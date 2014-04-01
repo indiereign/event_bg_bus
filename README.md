@@ -4,6 +4,7 @@ A simple pubsub event bus for Ruby applications.
 
 [![Build Status](https://travis-ci.org/artmees/event_bus.svg?branch=master)](https://travis-ci.org/artmees/event_bus)
 
+* Gem: <https://rubygems.org/gems/event_bg_bus>
 * Source code: <https://github.com/artmees/event_bus>
 
 ## Features
@@ -27,7 +28,7 @@ Add it to your Gemfile and run `bundle`.
 
 ``` ruby
 gem 'event_bus', github: 'artmees/event_bus'
-#or
+# or
 gem 'event_bg_bus'
 ```
 
