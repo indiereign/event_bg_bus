@@ -56,7 +56,7 @@ Publish events whenever something significant happens in your application:
 ```ruby
 class PlaceOrder
   //...
-  EventBus.bg_announce(:order_placed, order: current_order, customer: current_user)
+  EventBGBus.announce(:order_placed, order: current_order, customer: current_user)
 end
 ```
 
@@ -65,8 +65,6 @@ The Hash is optional and supplies a payload of information to any subscribers.
 
 (If you don't like the method name `announce` you can use `publish` or
 `broadcast` instead.)
-(If you don't like the method name `bg_announce` you can use `bg_publish` or
-`bg_broadcast` instead
 
 ### Subscribing to events
 
