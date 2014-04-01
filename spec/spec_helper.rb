@@ -10,3 +10,4 @@ Sidekiq::Testing.inline!
 SimpleCov.start
 
 require 'event_bus'
+require 'event_b_g_bus'
