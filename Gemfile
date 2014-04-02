@@ -8,7 +8,8 @@ group :test do
   gem 'rspec-spies'
   gem 'rspec-given'
   gem 'rake', '~> 10.0.1'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
   gem 'json'
+  gem 'codeclimate-test-reporter', require: nil
 end
 

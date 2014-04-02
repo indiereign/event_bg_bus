@@ -1,4 +1,4 @@
-# EventBus
+# EventBus / EventBGBus
 
 A simple pubsub event bus for Ruby applications.
 

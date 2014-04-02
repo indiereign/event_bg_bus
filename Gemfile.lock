@@ -1,13 +1,15 @@
 PATH
   remote: .
   specs:
-    event_bg_bus (0.0.1)
+    event_bg_bus (0.0.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    codeclimate-test-reporter (0.3.0)
+      simplecov (>= 0.7.1, < 1.0.0)
     connection_pool (2.0.0)
     diff-lcs (1.2.4)
     json (1.8.0)
@@ -46,6 +48,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  codeclimate-test-reporter
   event_bg_bus!
   json
   rake (~> 10.0.1)
