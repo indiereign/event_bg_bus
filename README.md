@@ -4,6 +4,7 @@ A simple pubsub event bus for Ruby applications.
 
 [![Build Status](https://travis-ci.org/artmees/event_bg_bus.svg?branch=master)](https://travis-ci.org/artmees/event_bg_bus)
 [![Code Climate](https://codeclimate.com/github/artmees/event_bg_bus.png)](https://codeclimate.com/github/artmees/event_bg_bus)
+[![Code Coverage](https://codeclimate.com/github/artmees/event_bg_bus/coverage.png)](https://codeclimate.com/github/artmees/event_bg_bus)
 
 * Gem: <https://rubygems.org/gems/event_bg_bus>
 * Docs: <http://rubydoc.info/github/artmees/event_bg_bus/master/frames>
