@@ -7,10 +7,10 @@ class EventBus
   class Registrations
     include Singleton
 
-    def announce(event_name, payload)
+    def announce(event_name, payload, async=false)
       full_payload = {event_name: event_name}.merge(payload)
       listeners.each do |listener|
-        pass_event_to listener, event_name, full_payload
+        pass_event_to listener, event_name, full_payload, async
       end
     end
 
@@ -40,11 +40,15 @@ class EventBus
       @error_handler
     end
 
-    def pass_event_to(listener, event_name, payload)
+    def pass_event_to(listener, event_name, payload, async)
       begin
         listener.respond(event_name, payload)
       rescue => error
-        error_handler.call(listener.receiver, payload.merge(error: error)) if error_handler
+        if error_handler
+          error_handler.call(listener.receiver, payload.merge(error: error))
+        elsif async # let sidekiq handle this
+          raise error
+        end
       end
     end
 

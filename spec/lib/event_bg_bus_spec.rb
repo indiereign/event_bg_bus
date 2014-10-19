@@ -46,23 +46,44 @@ describe EventBGBus do
 
   end
 
+  describe 'EventBus publishing with errors' do
+    Given(:error) { RuntimeError.new }
+    Given(:erroring_listener) { double(:erroring_listener) }
+    Given(:error_handler) { double(:error_handler, handle_error: true) }
+    Given { erroring_listener.stub(:handler) { raise error } }
+
+    context 'with no error handler, expect the error to throw to sidekiq' do
+      Given { EventBus.subscribe('aa123bb', erroring_listener, :handler) }
+      Given { EventBus.subscribe('aa123bb', listener, :handler) }
+      When(:result) { EventBus.publish('aa123bb') }
+      Then { listener.should have_received(:handler).with(event_name: 'aa123bb') }
+    end
+  end
+
   describe 'EventBGBus publishing with errors' do
     Given(:error) { RuntimeError.new }
     Given(:erroring_listener) { double(:erroring_listener) }
     Given(:error_handler) { double(:error_handler, handle_error: true) }
     Given { erroring_listener.stub(:handler) { raise error } }
 
-    context 'sends the event to the second listener when the first errors' do
+    context 'with no error handler, expect the error to throw to sidekiq' do
       Given { EventBus.subscribe('aa123bb', erroring_listener, :handler) }
       Given { EventBus.subscribe('aa123bb', listener, :handler) }
-      When { EventBGBus.publish('aa123bb') }
-      Then { listener.should have_received(:handler).with(event_name: 'aa123bb') }
+      When(:result) { EventBGBus.publish('aa123bb') }
+      Then { result.should have_failed(StandardError) }
     end
 
     context 'with an error handler' do
       Given { EventBus.on_error do |listener, payload|
         error_handler.handle_error(listener, payload)
       end }
+
+      context 'sends the event to the second listener when the first errors' do
+        Given { EventBus.subscribe('aa123bb', erroring_listener, :handler) }
+        Given { EventBus.subscribe('aa123bb', listener, :handler) }
+        When { EventBGBus.publish('aa123bb') }
+        Then { listener.should have_received(:handler).with(event_name: 'aa123bb') }
+      end
 
       context 'when the listener is an object' do
         Given { EventBus.subscribe('aa123bb', erroring_listener, :handler) }
