@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'simplecov', '~> 0'
   s.add_development_dependency 'sidekiq', '~> 0'
 
-  s.files          = `git ls-files -- lib spec [A-Z]* .rspec .yardopts`.split("\n")
-  s.test_files     = `git ls-files -- spec`.split("\n")
+  s.files          = Dir['lib/**/*.rb'] + Dir['spec/**/*.rb'] + Dir['[A-Z]*'] + Dir['.rspec'] + Dir['.yardopts']
+  s.test_files     = Dir['spec/**/*.rb']
   s.require_path   = 'lib'
 
 end
